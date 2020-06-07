@@ -1,0 +1,45 @@
+
+
+<body class="bg">
+
+    <div class="left">
+        <i class="fas fa-coins"></i>
+        EMBank
+    </div>
+    <div class="right">
+
+       <h2>Mot de passe Oublié ?</h2>
+       <h4>Entrez vos informations suivantes : </h4>
+    
+       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <i class="fas fa-envelope"></i>  
+            <input type="email" formControlName="email" placeholder="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                   <div *ngIf="f.email.errors.required">Email est obligatoire</div>
+             </div>
+        </div>
+           <div class="form-group">
+            <i class="fas fa-user"></i>
+               <input type="text" formControlName="username" placeholder="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+               <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                      <div *ngIf="f.username.errors.required">Nom d'utilisateur est obligatoire !!</div>
+                </div>
+           </div>
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" formControlName="password" placeholder="Dernier mot de passe" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">Mot de passe est obligatoire !!</div>
+                </div>
+           </div>
+           <div class="form-group">
+                 <button mat-raised-button type="reset" class="btn " [disabled]="loginForm.invalid" (click)="onPass()">
+                       <span  class="spinner-border spinner-border-sm mr-1"></span>
+                      envoyer 
+                  </button>
+                 
+           </div>
+       </form>
+    </div>
+</body>

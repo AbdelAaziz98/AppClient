@@ -1,0 +1,31 @@
+<div class="cslt">
+    <div class="text">
+<h3>
+    Nom de propriétaire : {{ name }} <br />
+    <br />
+
+    
+    &emsp;   Adresse Email  de propriétaire: {{ email }}<br /> 
+    <br />
+    &emsp;   Téléphone de propriétaire: {{ Telephone }}
+    <br />
+    <br />
+     Carte d'Identité Nationale de propriétaire : {{ cin }} <br/>
+     <br />
+     Ajouté(e) le : {{ datedajout }}  <br />
+     <br />
+     Solde : {{ solde }}  <br />
+     <br />
+    
+        </h3>
+    </div>
+        <mat-radio-group aria-label="Select an option" class="select">
+            <label>Séléctionner :</label> <br />
+           
+            <button mat-button  class="btn2" (click)="modifier()">
+                    Modifier</button>
+                    <button mat-button  class="btn3"  (click)="delete()">
+                            Supprimer</button>
+                            </mat-radio-group>
+
+</div>

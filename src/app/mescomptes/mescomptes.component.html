@@ -1,0 +1,30 @@
+<div class="comptes">
+    <button mat-button type="submit" [mat-dialog-close]="true" class="close">
+        <i class="fas fa-times"></i>
+    </button> 
+    <br/>
+    <br/>   
+    <hr>
+    
+    <table id="cpts">
+        <tr>
+            <th *ngFor = "let column of headers">
+                {{column}}
+    
+            </th>
+        </tr>
+    
+        <tr *ngFor = "let row of rows">
+            <td *ngFor = "let column of headers">
+              {{row[column]}}
+    
+            </td>
+           
+        </tr>
+
+        <button mat-button  class="btn1" (click)="ajouter()">
+            Ajouter un compte</button>
+       
+    </table>
+    
+    </div>

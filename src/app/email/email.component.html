@@ -1,0 +1,53 @@
+
+<div class="client">
+    <h1>Emails</h1>
+    <hr>
+    <h4>
+        {{todayDate | date:'short'}} 
+    </h4>
+  <!--
+    <div id="rolling_bar">
+        <input type="text" id="txt" placeholder="CIN">
+        <a routerLink="agent/profileclient" id="btn"  [(ngModel)]="cin">
+            <i class="fas fa-search"></i>
+        </a>
+    </div>
+
+    -->
+    <div>
+        
+    
+            <button mat-button (click)="email()" class="btnt" >
+              <i class="fas fa-plus"></i>Envoyer un email</button>
+    </div>
+   
+    <table id="customer">
+        
+        <tr>
+            <th *ngFor = "let column of headers">
+                {{column}}
+    
+            </th>
+        </tr>
+    
+        <tr *ngFor = "let row of rows">
+            <td *ngFor = "let column of headers">
+              {{row[column]}}
+    
+            </td>
+
+
+            <td class="bouton">
+            <button mat-raised-button class="btn" (click)="rep()">
+                Répondre
+            </button>
+        </td>
+        </tr>
+
+        
+        
+    </table>
+    
+    
+    
+    </div>

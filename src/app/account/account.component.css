@@ -1,0 +1,47 @@
+.box{
+    height: 370px;
+    width: 400px;
+}
+
+.btn{
+    background-color: gainsboro;
+    width: 40%;
+    height: 10%;
+    margin-top: 130px;
+    float: right;
+}
+
+.form-group{
+    margin-top: 25px;
+    padding: 7px;
+    
+}
+
+#type-select{
+    width: 50%;
+    height: 15%;
+    padding: 10px;
+    border: 2px solid ;
+}
+
+.form-group label{
+    font-size: 120%;
+
+}
+
+.form-group input{
+    width: 50%;
+    height: 10%;
+    padding: 10px;
+    border: 2px solid ;
+    margin-left: 10px;
+}
+
+.fas{
+    color: goldenrod;
+    font-size: 140%;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }

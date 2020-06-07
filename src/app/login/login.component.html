@@ -1,0 +1,33 @@
+
+<body class="bg">
+
+    <div class="left"><i class="fas fa-coins"></i>EMBank</div>
+    <div class="right">
+
+       <h2>Login</h2>
+    
+       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+           <div class="form-group">
+            <i class="fas fa-user"></i>
+               <input type="text" formControlName="username" placeholder="Entrer Nom d'utilisateur" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+               <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                      <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+           </div>
+            <div class="form-group">
+                  <i class="fas fa-lock"></i>
+                <input type="password" formControlName="password" placeholder="Entrer Mot de passe" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+           </div>
+           <div class="form-group">
+                 <button  class="btn btn-primary" routerLink="/agent"  [disabled]="loginForm.invalid">
+                       <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                             Se connecter
+                 </button>
+                 <a routerLink="/forgot" >Mot de passe Oublié  ?</a>
+           </div>
+       </form>
+    </div>
+</body>

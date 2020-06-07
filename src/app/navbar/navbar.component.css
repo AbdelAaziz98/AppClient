@@ -1,0 +1,150 @@
+.bg{
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.fas{
+    color: goldenrod;
+}
+
+span{
+    color: goldenrod;
+    font-size: 40px;
+}
+
+ mat-toolbar{
+    height: 90px;
+    
+}
+
+
+
+
+.spacer{
+    flex:1 1 auto;
+    margin-left:82%;
+    padding: 5px 5px;
+}
+
+.spacer a{
+    font-size: 150%;
+    background-color: gray;
+}
+
+.icon.selected{
+    background-color: rgb(168, 153, 153);
+}
+
+.icon{
+    font-size: 100%;
+    border: 1px goldenrod solid;
+    
+}
+
+.icon1{
+  font-size: 100%;
+  border: 1px goldenrod solid;
+  margin-left: 10px;
+  
+}
+.side{
+    height: 890px;
+    background-color: black;
+    width: 250px;
+    padding: 10px ;
+    top: 90px;
+    position: fixed;
+   
+}
+.side span{
+    font-size: 100%;
+   color: white;
+   padding-left: 50px;
+   padding-top: 100px;
+    
+   
+
+}
+.sidenav{
+    margin-top: 100px;
+    padding: 10px;
+}
+
+.user{
+    font-size: 700%;
+    margin-top: 10px;
+    margin-left: 60px;
+}
+
+.itm{
+    color:goldenrod;
+    font-size: 140%;
+    height: 10px;
+    padding: 20px 10px;
+  }
+  .itm:hover{
+    color:rgb(185, 174, 174);
+    
+  }
+  .itm.selected{
+    background: grey;
+  }
+  
+  .itm::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:5px;
+    width: 3px;
+    background-color: orange;
+    opacity: 0;
+    transform:scaleY(0) ;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .itm:hover::before{
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  .center{
+      margin-left: 20px;
+      
+     
+     width:50%;
+      position:center;
+  }
+
+  
+
+
+  .btnv{
+    width: 20%;
+    height: 170px;
+    margin-top:5%;
+    float: right;
+    margin-right:15%;
+    background-color:#017f8d ;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+  }
+
+  .btnt{
+    width: 20%;
+    height: 170px;
+    margin-top:5%;
+    float: right;
+    margin-right:10%;
+    background-color:#ecb920  ;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+  }
+  
+
+  .tabaff{
+    margin-left: 350px;
+ text-align: start;
+
+  }

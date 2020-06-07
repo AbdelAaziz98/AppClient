@@ -1,0 +1,68 @@
+.comptes{
+    margin-left: 300px;
+    padding-top: 100px;
+    width: 82%;
+        position: absolute;
+        top: 20;
+        right: 10px;
+}
+
+#cpts{
+    
+   
+    padding: 10px 20px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 40px;
+    
+
+}
+#rolling_bar input{
+    border: goldenrod solid 2px;
+    border-radius: 40px ;
+    margin-left: 35%;
+    width: 250px;
+}
+
+#rolling_bar i{
+    margin-left: 10px;
+}
+
+#btn{
+    color: goldenrod;
+    font-size: 125%;
+    
+}
+
+ h1{
+    color: goldenrod;
+    margin-left: 40%;
+    font-size: 300%;
+}
+
+ #cpts td, #cpts th{
+     border: 1px solid #ddd;
+     padding: 10px;
+ }
+
+
+ #cpts tr:nth-child(even){
+     background-color: #f2f2f2;
+ }
+
+ #cpts tr:hover{background-color: #ddd;}
+
+
+ #cpts th{
+     padding-top: 12px;
+     padding-bottom: 12px;
+     text-align: left;
+     background-color: goldenrod;
+     color: white;
+ }
+
+ .btn{
+     background-color: goldenrod;
+     margin-top: 20px;
+ }

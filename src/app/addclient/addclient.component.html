@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>nouveau Client</title>
+        <meta charset="UTF 8">
+    </head>
+
+<body class="bg">
+
+    
+    <div class="box">
+        
+<form [formGroup]="signupForm" (ngSubmit)="signup()">
+
+    
+    <div class="form-group">
+        <i class="fas fa-user"></i>
+        <input type="text" class="form-control" placeholder=" Nom et prenom" formControlName="Nom" >
+    </div>
+    
+    <div class="form-group">
+            <i class="fas fa-at"></i>
+            <input type="email" class="form-control" placeholder=" Email" formControlName="email">
+            
+    </div>
+   
+   
+    <div class="form-group">
+        <i class="fas fa-phone"></i>
+
+                <input type="number" class="form-control" placeholder="Numéro Téléphone" formControlName="numtel">
+                <label data-error="Champs Obligatoire!"></label>
+                
+            </div>
+    <div class="form-group">
+            <i class="far fa-credit-card"></i>
+            <input type="text" class="form-control" placeholder="CIN" formControlName="cin">
+            
+    </div>
+
+    <div class="form-group">
+            <i class="far fa-calendar-alt"></i>
+        <input type="text" onfocus="(this.type='date')"  onblur="(this.type='text')" class="form-control" placeholder="date d'ajout" formControlName="datedajout">
+        
+    </div>
+   
+    
+    <button mat-button class="btn" (onClick)="downloadpdf()" [mat-dialog-close]="true" >Ajouter</button>
+</form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<div class="comptes">
+        <h1> Comptes</h1>
+       
+       
+        <hr>
+        <h4>
+            {{todayDate | date:'short'}} 
+        </h4>
+        <div id="rolling_bar">
+            <input type="text" id="txt" placeholder="N° du Compte">
+            <a  id="btn" (click)="gotoacount()">
+                <i class="fas fa-search"></i>
+            </a>
+        </div>
+        <table id="cpts">
+            <tr>
+                <th *ngFor = "let column of headers">
+                    {{column}}
+        
+                </th>
+            </tr>
+        
+            <tr *ngFor = "let row of rows">
+                <td *ngFor = "let column of headers">
+                  {{row[column]}}
+        
+                </td>
+               
+            </tr>
+           
+        </table>
+        
+        </div>

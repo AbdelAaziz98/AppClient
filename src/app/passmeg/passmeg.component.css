@@ -1,0 +1,14 @@
+.boite{
+    height: 190px;
+    width: 500px;
+    border-radius: 2px ;
+}
+
+.boite p{
+    font-size: 130%;
+    margin-top: 20px;
+}
+.boite button{
+    color: goldenrod;
+    margin-top: 100px;
+}

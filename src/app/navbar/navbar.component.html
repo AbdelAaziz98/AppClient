@@ -1,0 +1,62 @@
+<div class="bg">
+
+  <mat-toolbar>
+    <span class="logo"><i class="fas fa-coins"></i>EMBank</span>
+  <div class="spacer">
+    <button mat-button  (click)="email()" class="icon"><i class="fas fa-bell"></i></button>
+    <button mat-button  routerLink="/login" class="icon1" ><i class="fas fa-power-off"></i></button>
+</div>
+</mat-toolbar>
+
+
+<div class="tabaff">
+  <router-outlet></router-outlet>
+
+   
+
+</div>
+
+<div class="menu">
+<div flexLayout="row" fxflex class="side">
+  <div class="user">
+    <i class="fas fa-user"></i>
+  </div><br />
+  
+  
+  <span>{{username}}</span>
+  <div  class="sidenav">
+    
+      <a mat-list-item  href="agent/compte" class="itm">
+          <i class="far fa-credit-card"> Comptes</i>
+           
+      </a>
+      <hr>
+      <a mat-list-item  href="agent/client" class="itm">
+        <i class="far fa-user"> Clients</i>
+         
+    </a>
+    <hr>
+      
+      <a mat-list-item href="agent/operation" class="itm">
+          <i class="fas fa-archive">
+              Opérations 
+          </i>  
+      </a>
+      <hr>
+    
+     
+     
+     
+  
+  </div>
+  
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
