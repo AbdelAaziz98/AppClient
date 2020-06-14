@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import {  AuthentificationService } from '../_services';
 import { first } from 'rxjs/operators';
+import {AuthenticationService} from "../_services";
 
 @Component({
   selector: 'app-login',
@@ -12,22 +12,22 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  loading = false;
-  submitted = false;
-  returnUrl: string ='/agent';
-  error: string;
-  
+    username: string;
+    password : string;
+    errorMessage = 'Invalid Credentials';
+    successMessage: string;
+    invalidLogin = false;
+    loginSuccess = false;
+
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
-              private authentificationService: AuthentificationService) {
-                if(this.authentificationService.currentUserValue){
-                  this.router.navigate(['/']);
-                }
+              private authentificationService: AuthenticationService) {
+
                }
 
-  
+
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -35,41 +35,23 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
 
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
   }
 
   get f(){ return this.loginForm.controls; }
   onSubmit(){
 
-    console.log(this.returnUrl);
+        this.authentificationService.authenticationService(this.f.username.value, this.f.password.value).subscribe((result)=> {
+          this.invalidLogin = false;
+          this.loginSuccess = true;
+          this.successMessage = 'Login Successful.';
+          this.router.navigate(['/agent']);
+        }, () => {
+          this.invalidLogin = true;
+          this.loginSuccess = false;
+        });
 
-    this.submitted = true;
-    if (this.loginForm.invalid){
-      return;
-    }
-    
 
-    this.loading = true;
-    if(this.f.username.value != "" && this.f.password.value != "")
-    {
-      console.log("ok");
-      this.router.navigate(['/agent']);
-    }
-    this.authentificationService.login(this.f.username.value, this.f.password.value)
-         .pipe(first())
-         .subscribe(
-           data => {
-             console.log("sucessss");
-             this.router.navigate([this.returnUrl]);
-           },
-           error =>{
-             console.log("errooooor");
-              //this.error = error;
-              this.loading = false;
-              
-           });
-           
-         
           }
-          
+
         }

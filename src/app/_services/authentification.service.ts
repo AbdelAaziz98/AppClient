@@ -1,35 +1,54 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthentificationService {
-  private currentUserSubject: BehaviorSubject<any>;
-  public currentUser: Observable<any>;
+export class AuthenticationService {
+
+  // BASE_PATH: 'http://localhost:8080'
+  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
+
+  public username: String;
+  public password: String;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
-   }
-  public get currentUserValue(){
-    return this.currentUserSubject.value;
+
   }
 
-  login(username, password){
-    return this.http.post<any>('${config.apiUrl}/users/authenticate',{username, password})
-    .pipe(map(user => {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.currentUserSubject.next(user);
-      return user;
-    }));
+  authenticationService(username: String, password: String) {
+    return this.http.get(`http://localhost:8085/login`,
+      { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
+        this.username = username;
+        this.password = password;
+        this.registerSuccessfulLogin(username, password);
+      }));
   }
 
-  logout(){
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
+  createBasicAuthToken(username: String, password: String) {
+    return 'Basic ' + window.btoa(username + ":" + password)
   }
 
+  registerSuccessfulLogin(username, password) {
+    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username)
+  }
+
+  logout() {
+    sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    this.username = null;
+    this.password = null;
+  }
+
+  isUserLoggedIn() {
+    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
+    if (user === null) return false
+    return true
+  }
+
+  getLoggedInUserName() {
+    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
+    if (user === null) return ''
+    return user
+  }
 }

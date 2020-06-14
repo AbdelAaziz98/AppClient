@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthentificationService } from './_services';
+import {AuthenticationService} from './_services';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +9,14 @@ import { AuthentificationService } from './_services';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
   currentUser: any;
 
   constructor(
       private router: Router,
-      private authenticationService: AuthentificationService
+      private authenticationService: AuthenticationService
   ) {
-      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+
   }
 
   logout() {

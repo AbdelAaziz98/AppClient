@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import {  AuthentificationService } from '../_services';
+import {  AuthenticationService } from '../_services';
 import { first } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import {PassmegComponent} from '../passmeg/passmeg.component';
@@ -18,27 +18,25 @@ export class ForgotComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error: string;
-  
-  
+
+
   constructor(private router: Router,
     public password: MatDialog,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private authentificationService: AuthentificationService) {
-      if(this.authentificationService.currentUserValue){
-        this.router.navigate(['/']);
-      }
+    private authentificationService: AuthenticationService) {
+
      }
 
 
-  
+
      ngOnInit(): void {
       this.loginForm = this.formBuilder.group({
         email:['',Validators.required],
         username: ['', Validators.required],
         password: ['', Validators.required],
       });
-  
+
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
     get f(){ return this.loginForm.controls; }
@@ -47,9 +45,9 @@ export class ForgotComponent implements OnInit {
       if (this.loginForm.invalid){
         return;
       }
-  
+
       this.loading = true;
-      this.authentificationService.login( this.f.username.value, this.f.password.value)
+      this.authentificationService.authenticationService( this.f.username.value, this.f.password.value)
            .pipe(first())
            .subscribe(
              data => {
@@ -58,10 +56,10 @@ export class ForgotComponent implements OnInit {
              error =>{
                 this.error = error;
                 this.loading = false;
-                
+
              });
-             
-           
+
+
             }
 
     onPass(){
@@ -74,8 +72,7 @@ export class ForgotComponent implements OnInit {
 
 
 
- 
 
-  
 
-  
+
+

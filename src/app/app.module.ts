@@ -53,6 +53,8 @@ import { ConsultercompteComponent } from './consultercompte/consultercompte.comp
 import { ModifiercompteComponent } from './modifiercompte/modifiercompte.component';
 import { ReponseComponent } from './reponse/reponse.component';
 import { ContactComponent } from './contact/contact.component';
+import {HttpInterceptorService} from "./_services/http-interceptor.service";
+
 
 
 
@@ -65,9 +67,9 @@ import { ContactComponent } from './contact/contact.component';
     EmailComponent,
     AddclientComponent,
     AddopComponent,
-   
+
     ClientsComponent,
-    
+
     ComptesComponent,
     PassmegComponent,
     ClientprofileComponent,
@@ -83,8 +85,8 @@ import { ContactComponent } from './contact/contact.component';
     ModifiercompteComponent,
     ReponseComponent,
     ContactComponent,
-    
-    
+
+
   ],
   imports: [
     BrowserModule,
@@ -107,9 +109,13 @@ import { ContactComponent } from './contact/contact.component';
     MatSnackBarModule,
     MatRadioModule
   ],
-  providers: [
-    ClientdataService
-    
+  providers:[
+    ClientdataService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass:HttpInterceptorService,
+    multi: true
+  }
   ],
   bootstrap: [AppComponent],
   entryComponents: [AddclientComponent,AddopComponent ,PassmegComponent,ModifiercompteComponent],
