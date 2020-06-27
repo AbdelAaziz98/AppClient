@@ -12,18 +12,22 @@ export class AuthenticationService {
 
   public username: String;
   public password: String;
-
+public agent:any;
   constructor(private http: HttpClient) {
 
   }
 
   authenticationService(username: String, password: String) {
-    return this.http.get(`http://localhost:8085/login`,
+
+
+
+    return this.http.get<any>(`http://localhost:8085/log`,
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
         this.username = username;
         this.password = password;
         this.registerSuccessfulLogin(username, password);
       }));
+
   }
 
   createBasicAuthToken(username: String, password: String) {

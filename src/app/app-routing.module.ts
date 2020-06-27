@@ -19,6 +19,8 @@ import { SuspendreComponent } from './suspendre/suspendre.component';
 import { DeleteComponent } from './delete/delete.component';
 import { ConsultercompteComponent } from './consultercompte/consultercompte.component';
 import { ContactComponent } from './contact/contact.component';
+import {canActivate} from "@angular/fire/auth-guard";
+import {AuthGuard} from "./auth.guard";
 
 
 
@@ -26,7 +28,9 @@ const routes: Routes = [
   {path:'', redirectTo:'/login',pathMatch:'full'},
   { path: 'login', component: LoginComponent },
   { path: 'forgot', component:ForgotComponent},
-  {path:'agent',component:NavbarComponent,
+  {path: 'logout', component: LoginComponent},
+  {path:'agent',component:NavbarComponent
+    ,canActivate:[AuthGuard],
       children:[
         {path:'logout',redirectTo:'/login',pathMatch:'full'},
         {path:'email',component:EmailComponent},
@@ -42,13 +46,14 @@ const routes: Routes = [
         {path:'suspendre',component:SuspendreComponent},
         {path:'delete',component:DeleteComponent}
 
-        
+
+
       ]
     },
 
- 
 
-  
+
+
 ];
 
 export const appRoutingModule = RouterModule.forRoot(routes);

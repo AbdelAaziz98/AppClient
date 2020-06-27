@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { first } from 'rxjs/operators';
 import {AuthenticationService} from "../_services";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
     loginSuccess = false;
 
 
-  constructor(private router: Router,
+  constructor(private router: Router,private http:HttpClient,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private authentificationService: AuthenticationService) {
@@ -40,17 +41,24 @@ export class LoginComponent implements OnInit {
 
   get f(){ return this.loginForm.controls; }
   onSubmit(){
-
+console.log(this.f.username.value);
+    console.log(this.f.password.value);
         this.authentificationService.authenticationService(this.f.username.value, this.f.password.value).subscribe((result)=> {
           this.invalidLogin = false;
           this.loginSuccess = true;
+console.log(result);
           this.successMessage = 'Login Successful.';
           this.router.navigate(['/agent']);
         }, () => {
           this.invalidLogin = true;
           this.loginSuccess = false;
         });
-
+    this.http.get('http://localhost:8085/agents/search/findByUsername?username='+this.f.username.value)
+      .subscribe(result=>{
+        console.log(result)
+      },error => {
+        console.log(error)
+      })
 
           }
 

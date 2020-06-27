@@ -6,6 +6,7 @@ import { from } from 'rxjs';
 
 import { AddopComponent } from '../addop/addop.component';
 import { EmailComponent } from '../email/email.component';
+import {AuthenticationService} from "../_services";
 
 
 @Component({
@@ -16,28 +17,30 @@ import { EmailComponent } from '../email/email.component';
 export class NavbarComponent implements OnInit {
 position="";
 username:string;
-  constructor(private router: Router, private dialog: MatDialog ) { }
+  constructor(private router: Router, private dialog: MatDialog ,private authen:AuthenticationService) { }
 
   ngOnInit(): void {
     this.position=this.router.url;
-    
+
   }
   /*
   gotoform(){
     this.router.navigate(['/clients']);
 
   }*/
- 
+
 
   email(){
     this.router.navigate(["agent/email"]);
   }
 
-  
-  
-    
-  
-     
+
+  handleLogout(){
+    this.authen.logout();
+  }
+
+
+
   }
 
 

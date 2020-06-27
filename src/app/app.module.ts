@@ -54,6 +54,7 @@ import { ModifiercompteComponent } from './modifiercompte/modifiercompte.compone
 import { ReponseComponent } from './reponse/reponse.component';
 import { ContactComponent } from './contact/contact.component';
 import {HttpInterceptorService} from "./_services/http-interceptor.service";
+import {AuthGuard} from "./auth.guard";
 
 
 
@@ -110,7 +111,7 @@ import {HttpInterceptorService} from "./_services/http-interceptor.service";
     MatRadioModule
   ],
   providers:[
-    ClientdataService,
+    ClientdataService,AuthGuard,
     {
     provide: HTTP_INTERCEPTORS,
     useClass:HttpInterceptorService,
